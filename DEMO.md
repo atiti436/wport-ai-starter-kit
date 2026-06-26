@@ -1,8 +1,7 @@
 # 課堂展示｜滿帆洋行公司介紹
 
 > **展示方式：** 本頁由 Cursor AI 依公開資訊整理，作為 wport-ai-starter-kit 課堂作業產出。  
-> **Repo：** [github.com/atiti436/wport-ai-starter-kit](https://github.com/atiti436/wport-ai-starter-kit)  
-> **展示網站（HTML）：** [`doc/demo/index.html`](./doc/demo/index.html) — 可 deploy 到 Vercel 取得公開網址
+> **Repo：** [github.com/atiti436/wport-ai-starter-kit](https://github.com/atiti436/wport-ai-starter-kit)
 
 ---
 
