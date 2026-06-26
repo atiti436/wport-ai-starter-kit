@@ -1,5 +1,8 @@
 # wport-ai-starter-kit
 
+> **📌 課堂展示（公司介紹）→ [DEMO.md](./DEMO.md)**  
+> 滿帆洋行 Manpan · 由 Cursor AI 整理 · [manpanwhisky.com](https://www.manpanwhisky.com/)
+
 **開源 AI Skills 工具包** — 搭配 [wport 職航站](https://www.wport.me) 與常用 MCP，讓 **任何新手小白** 都能用自然語言完成履歷、求職、簡報與品牌頁操作。
 
 不需要 Python、不需要自己寫 prompt。裝好 Skills，跟 AI 說你想做什麼就行。
