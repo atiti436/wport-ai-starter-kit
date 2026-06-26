@@ -130,37 +130,45 @@ node templates/report/render.mjs doc/resume/interview-prep.json doc/resume/inter
 
 ## 同一專案：履歷站 + open-slide 簡報站（Vercel 雙站）
 
-若 `doc/resume/`（靜態履歷 HTML）與 open-slide（`slides/` 簡報）**住在同一個 Git repo**，用 **兩個 Vercel Project** 指向同一 repo，各自設定不同的 Root / Output：
+若 `doc/resume/`（靜態履歷 HTML）與 open-slide（`slides/` 簡報）**住在同一個 Git repo**，必須遵守 **領地劃分 + 兩個 Vercel Project**，否則 build 與 deploy 會互相覆蓋。
+
+**完整契約（所有相關 skill 共用）：** [`docs/dual-site-layout.md`](docs/dual-site-layout.md)
+
+| 做什麼 | 用哪個 skill | 檔案落在哪 | Vercel Project |
+|--------|-------------|-----------|----------------|
+| 做履歷／報告 | `gen-resume` 系列 | `doc/resume/` only | `<name>-resume` |
+| 做簡報 | `create-slide` 系列 | `slides/` only | `<name>-slides` |
+| 上架 | `exec-vercel-cli` | 分兩次 deploy，各用對應 project | 見下表 |
 
 ```text
 my-workspace/
-├── doc/resume/          ← 站 A：履歷 + 職涯報告（靜態 HTML）
+├── doc/resume/          ← 站 A：履歷 + 職涯報告（含 vercel.json）
 ├── slides/              ← open-slide 簡報原始碼
 ├── package.json         ← open-slide 的 build
-└── ...
+└── dist/                ← 站 B build 輸出（勿與 doc/resume 混用）
 ```
 
 | Vercel Project | Root Directory | Build Command | Output Directory |
 |----------------|----------------|---------------|------------------|
-| `my-resume` | `doc/resume` 或 `.` | （可選）`node templates/resume/render.mjs ...` | `doc/resume` |
-| `my-slides` | `.`（open-slide 根目錄） | `pnpm build` | `dist`（依 open-slide 設定） |
+| `my-resume` | `doc/resume` | `doc/resume/vercel.json` 內建 | `.`（即 doc/resume） |
+| `my-slides` | `.` | `pnpm build` | `dist` |
+
+**勿打架：** 履歷 project **禁止**跑 `pnpm build`；簡報 project **禁止** output `doc/resume`。本機 `vercel link` 一次只對一個 project，deploy 前確認 `project.json`。
 
 步驟：
 
 1. `npx vercel login`
-2. 在 Vercel Dashboard **New Project** → 選同一個 GitHub repo → 取名 `my-resume` → Settings 設 Output = `doc/resume`
-3. 再 **New Project** → 同一 repo → 取名 `my-slides` → 設 Build = open-slide build、Output = `dist`
-4. 各自 `vercel link` 或於 CI 使用不同的 `VERCEL_PROJECT_ID`
-
-每個 project 會有獨立的 `*.vercel.app` 網址，也可綁不同自訂網域（例如 `resume.example.com` 與 `slides.example.com`）。
-
-詳見 [`skills/exec-vercel-cli/SKILL.md`](skills/exec-vercel-cli/SKILL.md)。
+2. **New Project** → 同一 repo → `my-resume` → Root = `doc/resume`
+3. **New Project** → 同一 repo → `my-slides` → Build = `pnpm build`、Output = `dist`
+4. 詳細 checklist：[`skills/exec-vercel-cli/SKILL.md`](skills/exec-vercel-cli/SKILL.md)
 
 ## 目錄結構
 
 ```
 wport-agents/
 ├── README.md
+├── docs/
+│   └── dual-site-layout.md   # 履歷 + open-slide 同 repo 契約
 ├── skills/
 │   ├── INDEX.md              # 人類快查索引
 │   ├── exec-wport-cli/

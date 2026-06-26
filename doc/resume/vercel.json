@@ -1,0 +1,5 @@
+{
+  "buildCommand": "node ../../templates/resume/render.mjs resume.json resume.html && cp resume.html index.html",
+  "installCommand": "",
+  "rewrites": [{ "source": "/", "destination": "/resume.html" }]
+}

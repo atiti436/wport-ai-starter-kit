@@ -19,6 +19,7 @@ When any of those paths reach the point of *writing React code for a page*, this
 - Put the slide under `slides/<kebab-case-id>/`.
 - Entry is `slides/<id>/index.tsx`. Images/videos/fonts go under `slides/<id>/assets/`.
 - Do **not** touch `package.json`, `open-slide.config.ts`, or other slides.
+- Do **not** write to `doc/resume/`, `templates/resume/`, or `templates/report/` — those belong to wport career skills (see [`docs/dual-site-layout.md`](../../docs/dual-site-layout.md)).
 - Do not add dependencies. Only `react` and standard web APIs are available.
 - A slide is **one `index.tsx` plus `assets/`** — nothing else. Do not create sibling `.tsx`/`.ts` files (`Card.tsx`, `components/`, `helpers.ts`, etc.); helper components and constants go inside `index.tsx`. The sole exception is **`messages.ts`** for multilingual copy — see the **`slide-i18n`** skill. Do not create `README.md` or other prose files either.
 

@@ -1,20 +1,97 @@
 ---
 name: exec-vercel-cli
 description: >-
-  Runs Vercel CLI for login, project linking, deploy, env vars, and multi-project
-  monorepo patterns. Use when the user mentions Vercel, vercel deploy, preview URL,
-  or hosting static sites / open-slide / resume HTML from one repo.
+  Runs Vercel CLI for login, project linking, deploy, env vars, and dual-project
+  monorepo patterns (resume site + open-slide). Use when the user mentions Vercel,
+  vercel deploy, preview URL, or hosting resume HTML and slides from one repo
+  without deploy conflicts.
 ---
 
 # Vercel CLI
 
 Upstream: [Vercel CLI](https://vercel.com/docs/cli)
 
+**Monorepo contract（履歷 + open-slide 同 repo）：** [`docs/dual-site-layout.md`](../../docs/dual-site-layout.md)
+
 Prefer project-local execution (no global install required):
 
 ```bash
 npx vercel <command>
 ```
+
+## Dual-site anti-collision rules（必讀）
+
+當 `doc/resume/`（履歷）與 `slides/`（open-slide）在同一 repo 時，deploy **必須**遵守：
+
+### 兩個 Project，不是一個
+
+| Vercel Project（建議命名） | Root Directory | Build Command | Output Directory | 絕對禁止 |
+|---------------------------|----------------|---------------|------------------|----------|
+| `<name>-resume` | `doc/resume` | 見下方「履歷 build」 | `.`（即 `doc/resume` 內容） | `pnpm build`、output `dist` |
+| `<name>-slides` | `.` | `pnpm build` | `dist` | output `doc/resume`、只 render 履歷 |
+
+- **禁止**只用一個 Vercel Project deploy 整個 repo。
+- **禁止**在 repo 根目錄放會讓兩站共用同一 `outputDirectory` 的 `vercel.json`。
+- 履歷站設定在 [`doc/resume/vercel.json`](../../doc/resume/vercel.json)；簡報站用 open-slide 根目錄 build，**不要**在 `doc/resume/` 放簡報 build。
+
+### 本機 `vercel link` 勿搞混
+
+`.vercel/project.json` 一次只對應一個 project。Deploy 前**先確認**連的是哪一站：
+
+```bash
+cat .vercel/project.json   # 看 projectName
+npx vercel link --project <name>-resume   # 履歷站
+npx vercel link --project <name>-slides   # 簡報站
+```
+
+不確定時 → 用 Vercel Dashboard 手動 deploy，或 CI 裡用不同 `VERCEL_PROJECT_ID`。
+
+**未指定 project 就 `vercel --prod` = 高風險**：可能把簡報 build 推到履歷網址，或反之。
+
+### 履歷 build（僅 `<name>-resume` project）
+
+Root Directory = `doc/resume` 時，使用 repo 內建的 `doc/resume/vercel.json`：
+
+```json
+{
+  "buildCommand": "node ../../templates/resume/render.mjs resume.json resume.html && cp resume.html index.html",
+  "installCommand": "",
+  "rewrites": [{ "source": "/", "destination": "/resume.html" }]
+}
+```
+
+或 Dashboard 手動設 Build Command（Root = repo 根時）：
+
+```bash
+node templates/resume/render.mjs doc/resume/resume.json doc/resume/resume.html
+cp doc/resume/resume.html doc/resume/index.html
+```
+
+Output Directory = `doc/resume`。
+
+### 簡報 build（僅 `<name>-slides` project）
+
+```bash
+pnpm install
+pnpm build
+```
+
+Output Directory = `dist`（依 open-slide 版本為準）。**勿**在履歷 project 跑此 build。
+
+### Deploy 前 checklist
+
+- [ ] 確認目前 `vercel link` 的 project 名稱（resume vs slides）
+- [ ] 履歷站：output 是 `doc/resume`，且有 `index.html` 或 `/` → `resume.html` rewrite
+- [ ] 簡報站：output 是 `dist`，且 `doc/resume/` 沒有被 build 覆寫
+- [ ] 沒有把 `dist/` 內容複製到 `doc/resume/`
+
+### 與其他 skill 分工
+
+| 使用者意圖 | 先完成的 skill | 本 skill deploy 哪一站 |
+|-----------|---------------|------------------------|
+| 履歷上線 | `gen-resume`（產出 `doc/resume/*.html`） | `<name>-resume` only |
+| 簡報上線 | `create-slide` + open-slide build | `<name>-slides` only |
+| 兩站都要 | 兩邊產物就緒後 | **分兩次** deploy，各用對應 project |
 
 ## Auth
 
@@ -28,101 +105,40 @@ For CI, create a token in Vercel dashboard → Account Settings → Tokens. Stor
 ## Common commands
 
 ```bash
-# Link current directory to a Vercel project (creates .vercel/)
 npx vercel link
-
-# Deploy preview (default)
-npx vercel
-
-# Deploy production
-npx vercel --prod
-
-# List deployments
+npx vercel                    # preview
+npx vercel --prod             # production — 先確認 project！
 npx vercel ls
-
-# Pull env vars to .env.local
 npx vercel env pull
-
-# Set env var (production)
 npx vercel env add <NAME> production
 ```
 
-## Static output (resume HTML, open-slide export)
-
-When the build output is a plain folder of static files:
+Deploy 指定 project（CI / 避免 link 搞混）：
 
 ```bash
-# From the folder that contains index.html (or your output root)
-npx vercel --prod
+npx vercel deploy --prod --token="$VERCEL_TOKEN"
+# 搭配環境變數 VERCEL_ORG_ID + VERCEL_PROJECT_ID（每站不同）
 ```
 
-If Vercel asks for settings on first deploy:
+## First-time Dashboard setup（雙站）
 
-| Prompt | Typical answer |
-|--------|----------------|
-| Framework | Other / None |
-| Build Command | leave empty or your build script |
-| Output Directory | `dist`, `out`, `doc/resume`, etc. |
-
-## One repo → two Vercel sites (monorepo)
-
-Use **two separate Vercel projects** pointing at the **same Git repo**, each with its own Root Directory and Output Directory.
-
-Example layout:
-
-```text
-my-career-workspace/
-├── slides/              # open-slide deck(s)
-├── doc/resume/          # rendered resume + reports (static HTML)
-├── vercel.resume.json   # optional per-site config
-└── vercel.slides.json
-```
-
-**Project A — Resume site**
-
-- Root Directory: `.` (or subfolder if you isolate resume assets)
-- Build Command: `node templates/resume/render.mjs doc/resume/resume.json doc/resume/resume.html` (if needed)
-- Output Directory: `doc/resume`
-- Install Command: leave empty for pure static
-
-**Project B — open-slide site**
-
-- Root Directory: `.` (open-slide workspace root)
-- Build Command: `pnpm build` or `npx @open-slide/cli build` per your open-slide setup
-- Output Directory: per open-slide docs (often `dist`)
-
-In each subfolder you can add a minimal `vercel.json`:
-
-```json
-{
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist"
-}
-```
-
-Link separately from each logical app root:
-
-```bash
-cd /path/to/workspace
-npx vercel link    # choose project "my-resume"
-# set Root Directory = doc/resume in Vercel dashboard
-
-cd /path/to/workspace
-npx vercel link    # choose project "my-slides"
-# set Root Directory = . and Build = open-slide build
-```
-
-**Dashboard path:** Project → Settings → General → Root Directory.
-
-Each project gets its own `*.vercel.app` URL and custom domain.
+1. `npx vercel login`
+2. **New Project** → 同一 GitHub repo → 名稱 `<name>-resume`
+   - Root Directory: `doc/resume`
+   - 使用 `doc/resume/vercel.json` 或手動設履歷 build
+3. **New Project** → 同一 repo → 名稱 `<name>-slides`
+   - Root Directory: `.`
+   - Build: `pnpm build`，Output: `dist`
+4. 各自綁定不同網域（例：`resume.example.com`、`slides.example.com`）
 
 ## CI checklist
 
-- [ ] `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` set per project (from `.vercel/project.json` after `vercel link`)
+- [ ] 履歷與簡報使用**不同的** `VERCEL_PROJECT_ID`
 - [ ] `VERCEL_TOKEN` in CI secrets
-- [ ] Production deploy: `npx vercel deploy --prod --token=$VERCEL_TOKEN`
+- [ ] 兩條 workflow 或 matrix job，勿共用同一 deploy job 而不指定 project
 
 ## Safety
 
-- Never commit `.vercel/` if it contains org-specific IDs you do not want shared — or commit only after team agreement.
-- Confirm `outputDirectory` before `--prod`; wrong directory publishes the wrong site.
+- Never commit `.vercel/` unless the team agrees — or gitignore it.
+- Confirm `outputDirectory` and linked project before `--prod`.
+- Wrong project = wrong site live (resume visitors see slides or vice versa).

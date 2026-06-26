@@ -9,6 +9,18 @@ This skill owns the **workflow** for drafting a new deck. The technical referenc
 
 You only write files under `slides/<id>/`. Never modify `package.json`, `open-slide.config.ts`, or existing slides.
 
+## Monorepo with wport resume（同 repo 雙站）
+
+若 repo 同時有 wport 履歷（`doc/resume/`），**必讀** [`docs/dual-site-layout.md`](../../docs/dual-site-layout.md)。
+
+**本 skill 鐵則：**
+
+- 簡報內容**只**寫 `slides/<id>/`（與 `themes/` 若使用者要建立主題）。
+- **禁止**寫入或覆蓋 `doc/resume/` 內任何履歷／報告 HTML、JSON。
+- **禁止**改 `templates/resume/` 或執行 `templates/resume/render.mjs`。
+- open-slide build 產物只進 `dist/`；**禁止**把 build 輸出導到 `doc/resume/`。
+- 使用者要「把簡報放上線」→ 交給 `exec-vercel-cli`，且只 deploy **簡報 Vercel project**（output `dist`）。
+
 ## Step 1 — Pick a theme
 
 List files under `themes/`. If any theme markdown files exist (anything other than `README.md`), call `AskUserQuestion` with each theme id as an option plus a final **"no theme — design from scratch"** option.

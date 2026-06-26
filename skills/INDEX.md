@@ -65,7 +65,7 @@
 | 轉職規劃 | `gen-career-mentor` → `gen-resume-optimizer` |
 | 活動 + 品牌頁 | `hypelink-event-mcp` + `hypelink-brand-page-mcp` |
 | 簡報 + 上線 | `create-slide` → `exec-vercel-cli` |
-| 履歷站 + 簡報站（同 repo） | 兩個 Vercel project，見 [`exec-vercel-cli`](exec-vercel-cli/) |
+| 履歷站 + 簡報站（同 repo） | 見 [`docs/dual-site-layout.md`](../docs/dual-site-layout.md) → `gen-resume` / `create-slide` 分領地 → `exec-vercel-cli` 雙 project deploy |
 
 ---
 
