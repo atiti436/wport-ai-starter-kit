@@ -1,0 +1,52 @@
+{
+  "resume_name": "專案經理 客製履歷・滿帆洋行創辦人",
+  "personal_info": {
+    "name": "（請補上姓名）",
+    "email": "manpan.whisky@gmail.com",
+    "residence_display": "桃園市",
+    "country_display": "台灣"
+  },
+  "background": {
+    "job_status_display": "創業經營中，開放正職機會洽談"
+  },
+  "autobiography": "<p>具備四年進出口採購與專案推動經驗，習慣獨立拆解任務、控管時程與成本，並與供應商、報關行等多方協調，確保專案如期交付。</p><p>創辦並獨力經營「滿帆洋行」品牌，從計畫發想、內容產製到工具上線完整負責，等同一人完成多個專案的規劃、執行與優化。</p><p>細心、有想法、具備良好的中文寫作能力，擅長把複雜流程拆解成可執行步驟並持續優化。</p>",
+  "work_experience": {
+    "has_no_work_experience": false,
+    "total_years_range_display": "4年以上",
+    "work_experiences": [
+      {
+        "job_title": "進出口採購（專案推動）",
+        "company_name": "（前公司名稱・待補）",
+        "job_type_display": "正職",
+        "duration_display": "約 4 年",
+        "job_description": "<ul><li>推動採購與進口專案，控管時程、成本與風險</li><li>跨單位與供應商、報關行協調，確保交付如期完成</li><li>進行成本估算與行情評估，優化採購執行流程</li></ul>"
+      },
+      {
+        "job_title": "創辦人／專案負責人",
+        "company_name": "滿帆洋行有限公司 Manpan Co., Ltd.",
+        "job_type_display": "正職",
+        "duration_display": "經營中",
+        "job_description": "<ul><li>獨立規劃並執行品牌內容與工具開發專案，從發想到上線完整負責</li><li>拆解目標為可執行細項，逐一分配並追蹤達成進度</li><li>持續優化內容產製與網站流程，提升使用者體驗</li></ul>"
+      }
+    ]
+  },
+  "education": [],
+  "job_condition": {
+    "feature_display": "正職",
+    "area_display": "桃園市中壢區",
+    "salary_expectation_display": "面議",
+    "available_start_display": "一個月內可上班"
+  },
+  "professional_skills": {
+    "job_skill_display": "專案推動與時程控管、成本估算與風險評估、跨部門協調、流程優化、中文寫作、供應商管理",
+    "tech_tool_display": "Obsidian、Markdown、AI 工具（Cursor／Claude）、基礎網站部署"
+  },
+  "language_skills": [
+    { "name": "中文", "level_display": "母語" }
+  ],
+  "certificates": [],
+  "portfolio_links": [
+    { "link_title": "滿帆洋行官方網站", "link_url": "https://www.manpanwhisky.com/" },
+    { "link_title": "個人展示網站", "link_url": "https://atiti436.github.io/wport-ai-starter-kit/doc/manpan/" }
+  ]
+}

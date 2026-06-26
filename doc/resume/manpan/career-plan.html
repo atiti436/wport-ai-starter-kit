@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wport 職涯導師 — 能力差距與成長路線圖</title>
+  <link rel="icon" type="image/x-icon" href="https://wport.me/favicon.ico">
+  <style>/**
+ * Source: W101-Web apps/user preview-resume + ResumeSections preview-mode.vue
+ * Sync with: W101-Web/apps/user/src/assets/styles/rich-text.scss
+ */
+:root {
+  --wport-primary: #56c7bb;
+  --wport-primary-hover: #4ebcb1;
+  --wport-title: #5d5d5d;
+  --wport-label: #9a9a9a;
+  --wport-text: #000000;
+  --wport-border: #d7d7d7;
+  --wport-page-bg: #fafafa;
+  --wport-icon-bg: #f5f5f5;
+  --wport-empty: #c0c0c0;
+  --wport-card-shadow: 0px 1px 10px #00000021;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, "Arial Rounded MT", sans-serif;
+  line-height: 1.5;
+  color: var(--wport-text);
+  background-color: var(--wport-page-bg);
+}
+
+.wport-preview-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+  width: 100%;
+  min-width: 0;
+}
+
+.wport-preview-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-width: 0;
+}
+
+.wport-card {
+  position: relative;
+  height: 100%;
+  border-radius: 8px;
+  background: #fff;
+  width: 100%;
+  box-shadow: var(--wport-card-shadow);
+  break-inside: avoid;
+}
+
+.wport-card--collapse {
+  border-radius: 16px;
+}
+
+.wport-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid var(--wport-border);
+}
+
+.wport-card-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--wport-title);
+  font-size: 20px;
+  padding: 7px 24px 6px;
+}
+
+.wport-card-title--simple {
+  padding-top: 7px;
+  padding-bottom: 6px;
+}
+
+.wport-display-section {
+  padding: 16px;
+  max-width: 932px;
+}
+
+@media (min-width: 768px) {
+  .wport-display-section {
+    padding: 37px 46px;
+  }
+}
+
+.wport-member-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+@media (min-width: 768px) {
+  .wport-member-layout {
+    flex-direction: row;
+  }
+}
+
+.wport-avatar-wrap {
+  flex: 0 0 auto;
+  padding-bottom: 14px;
+}
+
+@media (min-width: 768px) {
+  .wport-avatar-wrap {
+    padding-bottom: 0;
+  }
+}
+
+.wport-avatar {
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 9999px;
+  border: 1px solid var(--wport-border);
+  width: 86px;
+  height: 86px;
+  background: var(--wport-icon-bg);
+}
+
+@media (min-width: 1024px) {
+  .wport-avatar {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.wport-member-info {
+  flex: 1;
+  padding-bottom: 32px;
+}
+
+.wport-member-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.wport-member-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .wport-member-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.wport-info-row {
+  display: flex;
+  align-items: center;
+}
+
+.wport-info-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wport-icon-bg);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.wport-info-icon img {
+  width: 15px;
+  height: 15px;
+}
+
+.wport-info-value {
+  margin-left: 12px;
+}
+
+.wport-label-value-rows {
+  padding: 16px 16px;
+}
+
+@media (min-width: 768px) {
+  .wport-label-value-rows {
+    padding: 37px 46px;
+  }
+}
+
+.wport-label-value-rows > * + * {
+  margin-top: 18px;
+}
+
+.wport-label-value-row {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .wport-label-value-row {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.wport-label {
+  color: var(--wport-label);
+  white-space: nowrap;
+}
+
+.wport-value {
+  color: var(--wport-text);
+}
+
+.wport-total-years {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.wport-total-years-label {
+  width: 94px;
+  color: var(--wport-label);
+}
+
+.wport-timeline-item {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 24px;
+}
+
+.wport-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.wport-timeline-marker-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15px;
+  flex-shrink: 0;
+}
+
+.wport-timeline-marker {
+  margin-top: 3px;
+  display: block;
+  border-radius: 9999px;
+  width: 15px;
+  height: 15px;
+  background: var(--wport-primary);
+  flex-shrink: 0;
+}
+
+.wport-timeline-marker--gray {
+  background: #bebebe;
+  border: 1px solid #bebebe;
+}
+
+.wport-timeline-connector {
+  margin-top: 4px;
+  flex: 1;
+  width: 2px;
+  background: var(--wport-primary);
+  min-height: 12px;
+}
+
+.wport-timeline-item:last-child .wport-timeline-connector {
+  display: none;
+}
+
+.wport-timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.wport-timeline-content > * + * {
+  margin-top: 4px;
+}
+
+.wport-entry-title {
+  color: var(--wport-text);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.wport-entry-subtitle {
+  color: var(--wport-primary);
+  margin: 0;
+}
+
+.wport-entry-duration {
+  color: var(--wport-label);
+  margin: 0;
+}
+
+.wport-skill-block + .wport-skill-block {
+  margin-top: 16px;
+}
+
+.wport-skill-label {
+  color: var(--wport-label);
+  margin: 0 0 4px;
+}
+
+.wport-language-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wport-language-list > li + li {
+  margin-top: 16px;
+}
+
+.wport-language-name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.wport-language-level {
+  color: var(--wport-label);
+}
+
+.wport-cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wport-cert-name {
+  font-weight: 500;
+  color: #1f2937;
+  margin: 0;
+}
+
+.wport-cert-duration {
+  color: var(--wport-label);
+  margin: 0;
+}
+
+.wport-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wport-link-list > li + li {
+  margin-top: 16px;
+}
+
+.wport-link-list a {
+  color: var(--wport-label);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.wport-link-list a:hover {
+  color: var(--wport-primary);
+  text-decoration: underline;
+}
+
+.wport-job-pref-inner {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.wport-job-pref-inner > * + * {
+  margin-top: 18px;
+}
+
+.wport-empty {
+  color: var(--wport-empty);
+  text-align: center;
+}
+
+/* rich-text.scss — CSS vars mapped to wport tokens */
+.rich-content {
+  white-space: pre-wrap;
+  padding: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  color: black;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.rich-content h2 {
+  font-size: 1.5rem;
+}
+
+.rich-content .ql-editor {
+  padding: 0;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.rich-content ul li[data-list='bullet'] {
+  list-style-type: disc !important;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.rich-content ul li::before {
+  content: '\2022';
+  margin-inline-start: -1.5rem;
+  margin-inline-end: 0.3rem;
+  text-align: right;
+}
+
+.rich-content ol li[data-list='ordered'] {
+  list-style-type: decimal !important;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.rich-content ol li {
+  counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  counter-increment: list-0;
+}
+
+.rich-content .ql-editor li:not(.ql-direction-rtl)::before {
+  margin-inline-start: -1.5rem;
+  margin-inline-end: 0.3rem;
+  text-align: right;
+}
+
+.rich-content .ql-editor ol li:before {
+  content: counter(list-0, decimal) '. ';
+}
+
+.rich-content li[data-list]::marker {
+  color: black;
+}
+
+.rich-content ul,
+.rich-content ol,
+.rich-content li {
+  padding-inline-start: 1.5em;
+}
+
+.rich-content img,
+.rich-content iframe,
+.rich-content video {
+  max-width: 100%;
+}
+
+.rich-content blockquote {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 0.375rem;
+  background-color: #fafafa;
+  border-left: 4px solid #9de0d9;
+  color: var(--wport-label);
+}
+
+.rich-content pre {
+  white-space: unset !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.rich-content code {
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  background-color: var(--wport-icon-bg);
+  color: var(--wport-primary);
+}
+
+.rich-content a {
+  color: var(--wport-primary) !important;
+  text-decoration: underline;
+  text-decoration-color: #9de0d9;
+}
+
+.rich-content a:hover {
+  color: var(--wport-primary-hover);
+}
+
+.rich-content hr {
+  border-color: var(--wport-border);
+  margin: 1rem 0;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .wport-preview-page {
+    padding: 0;
+  }
+}
+
+/**
+ * Report layout — extends templates/resume/resume.css (loaded together in render.mjs)
+ */
+
+.wport-report-header {
+  padding: 24px 24px 16px;
+  border-bottom: 0.5px solid var(--wport-border);
+}
+
+.wport-report-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--wport-title);
+}
+
+.wport-report-subtitle {
+  margin: 8px 0 0;
+  color: var(--wport-label);
+  font-size: 0.95rem;
+}
+
+.wport-report-body {
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .wport-report-body {
+    padding: 28px 46px 36px;
+  }
+}
+
+.wport-report-section + .wport-report-section {
+  margin-top: 28px;
+}
+
+.wport-report-section-title {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--wport-title);
+}
+
+.wport-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.wport-report-table th,
+.wport-report-table td {
+  border: 0.5px solid var(--wport-border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.wport-report-table th {
+  background: var(--wport-icon-bg);
+  color: var(--wport-title);
+  font-weight: 700;
+}
+
+.wport-report-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.wport-report-list > li + li {
+  margin-top: 8px;
+}
+
+.wport-report-kv {
+  display: grid;
+  gap: 10px;
+}
+
+.wport-report-kv-row {
+  display: grid;
+  gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .wport-report-kv-row {
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+  }
+}
+
+.wport-report-kv-label {
+  color: var(--wport-label);
+  font-weight: 700;
+}
+
+.wport-report-kv-value {
+  color: var(--wport-text);
+}
+
+.wport-status-ready {
+  color: #059669;
+}
+
+.wport-status-partial {
+  color: #d97706;
+}
+
+.wport-status-missing {
+  color: #dc2626;
+}
+
+.wport-question-item {
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--wport-border);
+}
+
+.wport-question-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.wport-question-item:first-child {
+  padding-top: 0;
+}
+
+.wport-question-title {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: var(--wport-text);
+  line-height: 1.5;
+}
+
+.wport-question-meta {
+  margin: 0;
+  color: var(--wport-label);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.wport-question-meta + .wport-question-meta {
+  margin-top: 6px;
+}
+
+.wport-question-meta strong {
+  color: var(--wport-title);
+}
+
+.wport-callout {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-radius: 8px;
+  background: #f0faf9;
+  border-left: 4px solid var(--wport-primary);
+  color: var(--wport-text);
+  line-height: 1.6;
+}
+
+.wport-callout-label {
+  display: block;
+  font-weight: 700;
+  color: var(--wport-title);
+  margin-bottom: 6px;
+}
+
+.wport-gap-item + .wport-gap-item {
+  margin-top: 12px;
+}
+
+.wport-gap-name {
+  margin: 0;
+  font-weight: 700;
+  color: var(--wport-text);
+}
+
+.wport-gap-why {
+  margin: 4px 0 0;
+  color: var(--wport-label);
+}
+
+.wport-milestone-list {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.wport-milestone-list > li + li {
+  margin-top: 6px;
+}
+
+.wport-score {
+  max-width: 420px;
+}
+
+.wport-score-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.wport-score-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.wport-score-scale {
+  font-size: 0.9rem;
+  color: var(--wport-label);
+}
+
+.wport-score-sublabel {
+  margin-left: auto;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.wport-score-track {
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--wport-icon-bg);
+  overflow: hidden;
+}
+
+.wport-score-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.2s ease;
+}
+
+.wport-score-note {
+  margin: 10px 0 0;
+  color: var(--wport-label);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.wport-report-kv-row--score {
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .wport-report-kv-row--score {
+    grid-template-columns: 140px 1fr;
+  }
+}
+</style>
+</head>
+<body>
+  <main class="wport-preview-page">
+    <div class="wport-preview-stack">
+      <article class="wport-card wport-card--collapse">
+        <header class="wport-report-header">
+          <h1 class="wport-report-title">wport 職涯導師 — 能力差距與成長路線圖</h1>
+          <p class="wport-report-subtitle">日商海外業務／採購主管（活用日文 N1 與流程自動化）</p>
+        </header>
+        <div class="wport-report-body">
+<section class="wport-report-section">
+  <h2 class="wport-report-section-title">目標定位</h2>
+  <div class="wport-report-kv">
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">目標職缺</span><span class="wport-report-kv-value">日商海外業務／採購主管（活用日文 N1 與流程自動化）</span></div>
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">目前定位</span><span class="wport-report-kv-value">日文口譯業務助理 7 年 ＋ 日本設備商採購 2 年（個人貢獻者）</span></div>
+    <div class="wport-report-kv-row wport-report-kv-row--score"><span class="wport-report-kv-label">差距等級</span><span class="wport-report-kv-value">
+<div class="wport-score wport-score--gap">
+  <div class="wport-score-header">
+    <span class="wport-score-value" style="color:#65a30d">38</span>
+    <span class="wport-score-scale">/ 100</span>
+    <span class="wport-score-sublabel" style="color:#65a30d">一到兩階跳躍</span>
+  </div>
+  <div class="wport-score-track" aria-hidden="true">
+    <div class="wport-score-fill" style="width:38%; background:#65a30d"></div>
+  </div>
+  <p class="wport-score-note">領域與語言實力已到位，主要差距在團隊管理經驗與量化績效呈現</p>
+</div></span></div>
+    <div class="wport-report-kv-row wport-report-kv-row--score"><span class="wport-report-kv-label">誠實評估</span><span class="wport-report-kv-value">
+<div class="wport-score wport-score--feasibility">
+  <div class="wport-score-header">
+    <span class="wport-score-value" style="color:#059669">78</span>
+    <span class="wport-score-scale">/ 100</span>
+    <span class="wport-score-sublabel" style="color:#059669">可行</span>
+  </div>
+  <div class="wport-score-track" aria-hidden="true">
+    <div class="wport-score-fill" style="width:78%; background:#059669"></div>
+  </div>
+  <p class="wport-score-note">以現有日文與日商採購背景，1 至 2 年內升任主管或轉日商業務職務可行性高</p>
+</div></span></div>
+  </div>
+</section>
+<section class="wport-report-section">
+  <h2 class="wport-report-section-title">現有能力盤點</h2>
+  
+<table class="wport-report-table">
+  <thead>
+    <tr><th>能力面向</th><th>目前狀態</th><th>目標要求</th><th>差距</th></tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>日文與跨文化溝通</td>
+      <td class="wport-status-ready">已有</td>
+      <td>N1 商務口譯、日商文化</td>
+      <td>已具備，屬核心優勢</td>
+    </tr>
+    <tr>
+      <td>採購與供應商管理</td>
+      <td class="wport-status-ready">已有</td>
+      <td>議價、交期、成本控管</td>
+      <td>2 年實務已具備，可再累積金額規模佐證</td>
+    </tr>
+    <tr>
+      <td>團隊管理與領導</td>
+      <td class="wport-status-missing">缺少</td>
+      <td>帶領與分派團隊、培育成員</td>
+      <td>目前為個人貢獻者，缺正式帶人經驗</td>
+    </tr>
+    <tr>
+      <td>績效量化與商業思維</td>
+      <td class="wport-status-partial">部分</td>
+      <td>用數字呈現成本節省、營收貢獻</td>
+      <td>有實績但未系統化量化</td>
+    </tr>
+    <tr>
+      <td>流程自動化導入</td>
+      <td class="wport-status-partial">部分</td>
+      <td>用工具提升團隊效率</td>
+      <td>已會 GAS／TG Bot／AI，需累積對外可展示的導入案例</td>
+    </tr>
+    <tr>
+      <td>英文能力</td>
+      <td class="wport-status-missing">缺少</td>
+      <td>部分日商與外商需基本英文</td>
+      <td>目前入門，若鎖定純日商影響小，跨外商則需補強</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<section class="wport-report-section">
+  <h2 class="wport-report-section-title">核心缺口（按優先順序）</h2>
+  
+<div class="wport-gap-item">
+  <p class="wport-gap-name">1. 團隊管理經驗</p>
+  <p class="wport-gap-why">主管職要求能帶人、分派任務與培育成員，目前為個人貢獻者尚無正式帶人紀錄</p>
+</div>
+<div class="wport-gap-item">
+  <p class="wport-gap-name">2. 績效量化呈現</p>
+  <p class="wport-gap-why">採購與業務成果需用節省成本、縮短交期、營收貢獻等數字佐證，才能支撐主管職說服力</p>
+</div>
+<div class="wport-gap-item">
+  <p class="wport-gap-name">3. 自動化導入的對外案例</p>
+  <p class="wport-gap-why">自動化技能是差異化亮點，但需有可展示的實際導入成效，才能成為求職籌碼</p>
+</div>
+</section>
+<section class="wport-report-section">
+  <h2 class="wport-report-section-title">1 年計畫（立即可動手）</h2>
+  
+<table class="wport-report-table">
+  <thead>
+    <tr><th>季度</th><th>目標</th><th>具體行動</th><th>驗收指標</th></tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>Q1</td>
+      <td>盤點並量化過去實績</td>
+      <td>整理 7+2 年口譯與採購的具體成果，補上金額、件數、節省比例等數字</td>
+      <td>完成可量化的履歷與作品集，至少 5 條帶數字的成就</td>
+    </tr>
+    <tr>
+      <td>Q2</td>
+      <td>建立自動化導入案例</td>
+      <td>把 GAS 團購表單、TG Bot 接 Claude 整理成 before/after 效率對比文件</td>
+      <td>產出 2 個可對外展示的自動化案例說明</td>
+    </tr>
+    <tr>
+      <td>Q3</td>
+      <td>爭取帶人或專案主導機會</td>
+      <td>在現職或副業主動帶 1 位新人或主導一個跨部門專案</td>
+      <td>完成一次帶人或專案主導，並記錄成果</td>
+    </tr>
+    <tr>
+      <td>Q4</td>
+      <td>鎖定日商業務／採購主管職投遞</td>
+      <td>以客製履歷投遞日商貿易、設備、商社類職缺並面試</td>
+      <td>取得 3 場以上日商面試</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<section class="wport-report-section">
+  <h2 class="wport-report-section-title">3 年計畫（職涯位移）</h2>
+  <div class="wport-report-kv">
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">目標職位</span><span class="wport-report-kv-value">日商採購／海外業務 課長級主管</span></div>
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">關鍵里程碑</span><span class="wport-report-kv-value"><ul class="wport-milestone-list"><li>Year 1：完成實績量化與自動化案例，轉入更具規模的日商或升任小組負責人</li><li>Year 2：正式帶領 2-3 人團隊，負責採購或業務線的目標達成</li><li>Year 3：建立穩定的供應商與客戶網絡，主導年度採購或業績計畫</li></ul></span></div>
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">建議職涯移動</span><span class="wport-report-kv-value">在日商體系內由業務助理／採購升任課長級，或轉入貿易商社擔任主管</span></div>
+  </div>
+</section>
+<section class="wport-report-section">
+  <h2 class="wport-report-section-title">5 年計畫（長期願景）</h2>
+  <div class="wport-report-kv">
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">目標定位</span><span class="wport-report-kv-value">貿易／採購部門主管，或結合自動化的營運角色</span></div>
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">累積路徑</span><span class="wport-report-kv-value">以日文與日商人脈為基礎，往部門管理發展；同時把流程自動化能力擴大為部門級導入，成為兼具語言、採購與數位優化的複合型主管</span></div>
+    <div class="wport-report-kv-row"><span class="wport-report-kv-label">需要把握的機會</span><span class="wport-report-kv-value">日商在台分公司管理職、台日貿易公司採購主管、或協助中小企業導入採購自動化的顧問型角色</span></div>
+  </div>
+</section>
+<section class="wport-report-section">
+  <h2 class="wport-report-section-title">現在就能做的 3 件事</h2>
+  <ul class="wport-report-list"><li>把履歷的工作經歷補上具體公司名稱、年份與可量化成果</li><li>將 GAS 與 TG Bot 自動化整理成 1 頁 before/after 案例</li><li>確認 JLPT N1 證書資料，於履歷與面試明確標示</li></ul>
+</section>
+
+<div class="wport-callout">
+  <span class="wport-callout-label">導師叮嚀</span>
+  你最大的優勢是日文 N1 加 9 年台日實務，這在市場上稀缺；最該補的不是技能而是把成果量化，並爭取一次正式帶人經驗，主管職就會水到渠成。不要因為英文入門而退縮，鎖定純日商環境反而能放大你的語言優勢。
+</div></div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

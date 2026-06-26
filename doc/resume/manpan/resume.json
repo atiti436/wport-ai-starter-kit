@@ -1,0 +1,64 @@
+{
+  "resume_name": "HUANG YALIN・日文業務／日商採購履歷",
+  "personal_info": {
+    "name": "HUANG YALIN（黃雅琳）",
+    "email": "manpan.whisky@gmail.com",
+    "residence_display": "桃園市",
+    "country_display": "台灣"
+  },
+  "background": {
+    "job_status_display": "開放正職機會洽談"
+  },
+  "autobiography": "<p>具備 7 年日文口譯業務助理與 2 年日本設備商採購經驗，日文 N1，熟悉日商溝通文化、商務口譯與跨國採購流程。</p><p>擅長在台日雙方之間擔任溝通橋樑，從口譯、議價談判到供應商與交期管理皆有第一線實務。近年自學自動化工具（Google Apps Script、Telegram Bot 串接 AI、Claude Code），能把重複性作業流程自動化，提升團隊效率。</p><p>另經營日本酒知識品牌「滿帆洋行」，獨立完成內容企劃、進口報關稅務試算工具與品牌經營，展現主動學習與從零到上線的執行力。</p>",
+  "work_experience": {
+    "has_no_work_experience": false,
+    "total_years_range_display": "9年以上",
+    "work_experiences": [
+      {
+        "job_title": "日文口譯業務助理",
+        "company_name": "（公司名稱・待補）",
+        "job_type_display": "正職",
+        "duration_display": "約 7 年",
+        "job_description": "<ul><li>擔任台日雙方商務口譯與文件翻譯，溝通需求與規格</li><li>業務助理事務：報價、訂單、交期追蹤與客戶聯繫</li><li>協調跨部門與日方窗口，確保專案順利推進</li></ul>"
+      },
+      {
+        "job_title": "日本設備商採購",
+        "company_name": "（公司名稱・待補）",
+        "job_type_display": "正職",
+        "duration_display": "約 2 年",
+        "job_description": "<ul><li>負責日本設備採購、供應商開發與議價談判</li><li>處理進出口與報關流程，掌握成本與交期控管</li><li>以日文直接與日方供應商溝通，降低溝通落差</li></ul>"
+      },
+      {
+        "job_title": "創辦人",
+        "company_name": "滿帆洋行有限公司 Manpan Co., Ltd.（副業）",
+        "job_type_display": "兼職",
+        "duration_display": "經營中",
+        "job_description": "<ul><li>規劃經營日本酒知識型內容網站，內容企劃與社群維運</li><li>設計進口稅、菸酒稅、營業稅線上試算工具</li><li>運用 AI 工具自動化內容與流程</li></ul>"
+      }
+    ]
+  },
+  "education": [],
+  "job_condition": {
+    "feature_display": "正職",
+    "area_display": "桃園市／台北市",
+    "salary_expectation_display": "面議",
+    "available_start_display": "一個月內可上班"
+  },
+  "professional_skills": {
+    "job_skill_display": "日文商務口譯、日商業務協調、跨國採購與供應商議價、進出口與報關實務、交期與成本控管、流程自動化導入",
+    "tech_tool_display": "Google Apps Script（GAS）、Telegram Bot 串接 AI、Claude Code、Codex、Obsidian、Markdown"
+  },
+  "language_skills": [
+    { "name": "中文", "level_display": "母語" },
+    { "name": "日文", "level_display": "N1（商務口譯 7 年）" },
+    { "name": "英文", "level_display": "入門" }
+  ],
+  "certificates": [
+    { "name": "日本語能力試驗 JLPT N1", "duration_display": "" }
+  ],
+  "portfolio_links": [
+    { "link_title": "滿帆洋行官方網站", "link_url": "https://www.manpanwhisky.com/" },
+    { "link_title": "Facebook 粉專", "link_url": "https://www.facebook.com/manpan.whisky/" },
+    { "link_title": "個人展示網站（GitHub Pages）", "link_url": "https://atiti436.github.io/wport-ai-starter-kit/doc/manpan/" }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "type": "customization",
+  "title": "wport 履歷客製化報告",
+  "target_job": {
+    "company": "雲育鏈股份有限公司",
+    "title": "Senior Business Development Manager 資深業務人員"
+  },
+  "changes": [
+    {
+      "section": "自傳",
+      "change": "開頭改以業務型人才定位，強調議價談判與客戶關係開發",
+      "jd_requirement": "拓展新合作機會並維護既有客戶關係"
+    },
+    {
+      "section": "工作經歷",
+      "change": "將進出口採購調整至第一順位，並把採購職責重寫為供應商開發、議價、市場分析",
+      "jd_requirement": "具備 2-3 年業務開發經驗、能談判合約與價格"
+    },
+    {
+      "section": "工作經歷",
+      "change": "把滿帆洋行經營重寫為品牌推廣計畫設計與受眾開發",
+      "jd_requirement": "策劃並執行全面的業務開發計劃"
+    },
+    {
+      "section": "專業技能",
+      "change": "新增業務開發、合約談判、市場研究等與職缺對齊的關鍵字（皆為實有能力）",
+      "jd_requirement": "市場數據分析、客戶溝通與談判"
+    },
+    {
+      "section": "求職條件",
+      "change": "工作地點對齊至桃園市中壢區",
+      "jd_requirement": "工作地點：桃園市中壢區"
+    }
+  ],
+  "keywords": {
+    "jd_emphasis": ["業務開發", "客戶關係維繫", "合約與價格談判", "市場研究與分析", "公有雲 AWS/GCP", "ITC 軟硬體產品"],
+    "resume_matched": ["業務開發", "客戶關係維繫", "議價談判", "市場研究與分析"],
+    "genuine_gaps": ["公有雲 AWS/GCP 服務知識", "資通訊（ITC）軟硬體產品經驗", "正式 B2B 業務開發年資（採購談判可部分轉移）"]
+  },
+  "recommendations": [
+    {
+      "gap": "公有雲 AWS/GCP 服務知識",
+      "how_to_build": "完成 AWS Cloud Practitioner 或 Google Cloud Digital Leader 入門認證，面試時即可展現學習意願與基礎概念"
+    },
+    {
+      "gap": "資通訊產品銷售經驗",
+      "how_to_build": "在面試中以採購端視角切入：說明你如何評估供應商產品與議價，將買方經驗轉化為賣方洞察"
+    },
+    {
+      "gap": "B2B 業務開發年資",
+      "how_to_build": "用滿帆洋行的受眾成長、合作洽談等具體數字，佐證你已具備開發與維繫關係的實戰能力"
+    }
+  ],
+  "footer_tip": "可接續使用 interviewer-ai，針對此職缺模擬面試問答。"
+}

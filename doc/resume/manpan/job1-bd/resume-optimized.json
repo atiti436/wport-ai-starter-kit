@@ -1,0 +1,53 @@
+{
+  "resume_name": "資深業務開發 客製履歷・滿帆洋行創辦人",
+  "personal_info": {
+    "name": "（請補上姓名）",
+    "email": "manpan.whisky@gmail.com",
+    "residence_display": "桃園市",
+    "country_display": "台灣"
+  },
+  "background": {
+    "job_status_display": "創業經營中，開放正職機會洽談"
+  },
+  "autobiography": "<p>具備四年進出口採購與議價談判經驗的業務型人才，擅長供應商與客戶關係的開發與長期維繫，習慣以市場行情與成本數據支持談判與決策。</p><p>創辦並經營知識型品牌「滿帆洋行」，從內容企劃、產品定位到社群經營一手包辦，熟悉如何用透明資訊建立信任、把潛在受眾轉化為長期關係——這正是業務開發的核心能力。</p><p>對達成目標有高度企圖心，樂於與人接觸，能獨立規劃並執行完整的開發計畫。</p>",
+  "work_experience": {
+    "has_no_work_experience": false,
+    "total_years_range_display": "4年以上",
+    "work_experiences": [
+      {
+        "job_title": "進出口採購（業務／議價）",
+        "company_name": "（前公司名稱・待補）",
+        "job_type_display": "正職",
+        "duration_display": "約 4 年",
+        "job_description": "<ul><li>供應商開發與議價談判，掌握成本與價格策略</li><li>維繫供應商與客戶長期合作關係，定期蒐集需求並回饋</li><li>蒐集與分析市場行情，作為採購與商務決策依據</li><li>處理進出口流程與報關文件，確保交付如期完成</li></ul>"
+      },
+      {
+        "job_title": "創辦人",
+        "company_name": "滿帆洋行有限公司 Manpan Co., Ltd.",
+        "job_type_display": "正職",
+        "duration_display": "經營中",
+        "job_description": "<ul><li>品牌定位、市場研究與受眾開發，建立穩定的內容客群</li><li>規劃並執行完整的品牌推廣計畫（內容、社群、工具）</li><li>以透明資訊建立信任，將潛在受眾轉化為長期關係</li></ul>"
+      }
+    ]
+  },
+  "education": [],
+  "job_condition": {
+    "feature_display": "正職",
+    "area_display": "桃園市中壢區",
+    "salary_expectation_display": "面議",
+    "available_start_display": "一個月內可上班"
+  },
+  "professional_skills": {
+    "job_skill_display": "業務開發、議價與合約談判、客戶關係維繫、市場研究與數據分析、供應商開發、品牌推廣計畫設計",
+    "tech_tool_display": "Obsidian、Markdown、AI 工具（Cursor／Claude）、基礎網站部署"
+  },
+  "language_skills": [
+    { "name": "中文", "level_display": "母語" }
+  ],
+  "certificates": [],
+  "portfolio_links": [
+    { "link_title": "滿帆洋行官方網站", "link_url": "https://www.manpanwhisky.com/" },
+    { "link_title": "Facebook 粉專（社群經營實績）", "link_url": "https://www.facebook.com/manpan.whisky/" },
+    { "link_title": "個人展示網站", "link_url": "https://atiti436.github.io/wport-ai-starter-kit/doc/manpan/" }
+  ]
+}
