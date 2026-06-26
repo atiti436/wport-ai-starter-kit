@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>滿帆洋行 Manpan · 給旅人的日本酒實用筆記</title>
+<meta name="description" content="滿帆洋行 Manpan — 日本梅酒與威士忌的知識型內容網站。稅金試算、帶酒攻略、進口報關實務，給往返日台旅人的一份實用筆記。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&display=swap">
+<style>
+  :root{
+    --amber:#c8851a; --amber-bright:#e8a93b; --amber-soft:#f3d9a0;
+    --ink:#1a1410; --ink-2:#2b211a; --paper:#fbf6ee; --paper-2:#f4ead9;
+    --muted:rgba(26,20,16,.62); --line:rgba(26,20,16,.12);
+    --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  /* ===== Nav ===== */
+  nav{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--serif);font-weight:900;font-size:20px;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+  .brand .mark{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--amber-bright),var(--amber));display:grid;place-items:center;color:#fff;font-size:15px}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:500}
+  .navlinks a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .navlinks a:hover{color:var(--amber)}
+  @media(max-width:680px){.navlinks{display:none}}
+
+  /* ===== Hero ===== */
+  header.hero{position:relative;overflow:hidden;background:
+     radial-gradient(120% 80% at 80% -10%,rgba(232,169,59,.20),transparent 60%),
+     linear-gradient(180deg,var(--paper),var(--paper-2))}
+  .hero .wrap{padding:96px 24px 88px;position:relative;z-index:2}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--amber);text-transform:uppercase;margin-bottom:22px}
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--amber)}
+  h1{font-family:var(--serif);font-weight:900;font-size:clamp(34px,6vw,60px);line-height:1.15;letter-spacing:.01em}
+  h1 .hl{color:var(--amber)}
+  .lede{margin-top:24px;max-width:620px;font-size:clamp(16px,2.2vw,19px);color:var(--muted)}
+  .cta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s,box-shadow .2s}
+  .btn-primary{background:linear-gradient(135deg,var(--amber-bright),var(--amber));color:#fff;box-shadow:0 8px 24px rgba(200,133,26,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,133,26,.45)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .hero-badge{position:absolute;right:-40px;top:40px;font-family:var(--serif);font-weight:900;font-size:240px;color:rgba(200,133,26,.07);z-index:1;user-select:none;pointer-events:none}
+
+  /* ===== Section base ===== */
+  section{padding:80px 0}
+  .sec-head{max-width:640px;margin-bottom:48px}
+  .sec-tag{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--amber);text-transform:uppercase}
+  .sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);margin-top:12px;line-height:1.25}
+  .sec-head p{margin-top:14px;color:var(--muted);font-size:16px}
+
+  /* About */
+  #about{background:var(--ink);color:var(--paper)}
+  #about .sec-tag{color:var(--amber-bright)}
+  #about .sec-head h2{color:#fff}
+  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:32px}}
+  #about p.body{color:rgba(251,246,238,.78);font-size:16.5px;margin-bottom:18px}
+  .quote{border-left:3px solid var(--amber);padding:6px 0 6px 22px;font-family:var(--serif);font-size:20px;line-height:1.7;color:#fff}
+  .stat-card{background:var(--ink-2);border:1px solid rgba(243,217,160,.14);border-radius:16px;padding:24px}
+  .stat-card+.stat-card{margin-top:16px}
+  .stat-card .k{font-family:var(--serif);font-weight:900;color:var(--amber-bright);font-size:24px}
+  .stat-card .v{color:rgba(251,246,238,.7);font-size:14.5px;margin-top:4px}
+
+  /* Features */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:680px){.cards{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .18s,box-shadow .2s,border-color .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,20,16,.10);border-color:var(--amber-soft)}
+  .card .ico{width:46px;height:46px;border-radius:12px;background:var(--paper-2);display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+  .card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* Why us */
+  #why{background:var(--paper-2)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:760px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:440px){.why-grid{grid-template-columns:1fr}}
+  .why-item{text-align:center;padding:24px 14px}
+  .why-item .num{font-family:var(--serif);font-weight:900;font-size:40px;color:var(--amber)}
+  .why-item h4{margin-top:8px;font-size:17px;font-weight:700}
+  .why-item p{margin-top:6px;color:var(--muted);font-size:14px}
+
+  /* Contact */
+  #contact{text-align:center}
+  #contact h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.5vw,42px)}
+  #contact p{margin:16px auto 0;max-width:560px;color:var(--muted);font-size:16.5px}
+  .contact-cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .note{margin-top:28px;display:inline-block;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);padding:8px 18px;border-radius:999px}
+
+  footer{background:var(--ink);color:rgba(251,246,238,.55);padding:36px 0;font-size:13.5px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  footer .brand{color:var(--paper);font-size:16px}
+  footer .brand .mark{width:24px;height:24px;font-size:12px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="mark">滿</span>滿帆洋行 Manpan</div>
+    <div class="navlinks">
+      <a href="#about">關於滿帆</a>
+      <a href="#offer">我們提供</a>
+      <a href="#why">為什麼是我們</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="hero-badge">帆</span>
+  <div class="wrap">
+    <span class="eyebrow">給旅人的日本酒實用筆記</span>
+    <h1>日本梅酒與威士忌，<br>從<span class="hl">挑選到帶回家</span>的一站知識。</h1>
+    <p class="lede">滿帆洋行 Manpan 是一個<strong>不販售、純知識型</strong>的內容網站。我們把進口、報關、稅金與帶酒規定，用白話整理成工具與攻略——讓往返日台的旅人，買得安心、帶得明白。</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://www.manpanwhisky.com/" target="_blank" rel="noopener">逛逛官方網站 →</a>
+      <a class="btn btn-ghost" href="#offer">看我們提供什麼</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="sec-tag">About</span>
+        <h2 style="font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);margin-top:12px;color:#fff;line-height:1.25">關於滿帆洋行</h2>
+        <p class="body" style="margin-top:22px">滿帆洋行起點很單純：往返日本與台灣的旅程中，我們累積了大量關於採購、進口與報關的實際觀察。後來發現，許多旅人都被同樣的問題卡住——能帶多少？要繳多少稅？怎麼寄回來最划算？</p>
+        <p class="body">於是我們把這些經驗整理成一份公開筆記。不賣酒、不設購物車，只做一件事：<strong style="color:var(--amber-bright)">把複雜的酒類進口知識，變得人人看得懂。</strong></p>
+        <div class="quote">「這不是一個販售網站，而是一份給旅人的實用筆記。」</div>
+      </div>
+      <div>
+        <div class="stat-card"><div class="k">梅酒 × 威士忌</div><div class="v">聚焦日本酒款的故事與釀造知識</div></div>
+        <div class="stat-card"><div class="k">稅金一鍵試算</div><div class="v">進口稅、菸酒稅、營業稅自動算給你看</div></div>
+        <div class="stat-card"><div class="k">非販售導向</div><div class="v">不設購物車、不賣商品，只給知識</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offer">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">What we offer</span>
+      <h2>我們提供什麼</h2>
+      <p>四個方向，覆蓋一位旅人從「想買」到「順利帶回家」的完整需求。</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ico">🍶</div><h3>酒款介紹</h3><p>日本梅酒與威士忌的故事、產地與釀造知識，讓你不只會喝，更懂得挑。</p></div>
+      <div class="card"><div class="ico">🧮</div><h3>稅金試算工具</h3><p>輸入數量與品項，自動算出進口稅、菸酒稅與營業稅，金額一目了然。</p></div>
+      <div class="card"><div class="ico">🧳</div><h3>豆知識與攻略</h3><p>帶酒規定、購買管道、運寄方式——把繁瑣法規拆成新手也懂的步驟。</p></div>
+      <div class="card"><div class="ico">📈</div><h3>市場情報</h3><p>價格動態與新品資訊，掌握第一手的日本酒類市場脈動。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">Why us</span>
+      <h2>為什麼是滿帆洋行</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="num">01</div><h4>實務經驗</h4><p>整理過去採購、進口與報關的第一線觀察</p></div>
+      <div class="why-item"><div class="num">02</div><h4>工具導向</h4><p>用試算器解決真實問題，而不只是文章</p></div>
+      <div class="why-item"><div class="num">03</div><h4>新手友善</h4><p>用白話解釋複雜的法規與稅金</p></div>
+      <div class="why-item"><div class="num">04</div><h4>非販售</h4><p>不賣商品，立場中立，只給你需要的知識</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <span class="sec-tag">Contact</span>
+    <h2 style="margin-top:12px">想聊聊日本酒，或合作交流？</h2>
+    <p>不論是想帶酒前先問清楚，還是內容合作、交流想法，都歡迎找滿帆洋行聊聊。</p>
+    <div class="contact-cta">
+      <a class="btn btn-primary" href="mailto:manpan.whisky@gmail.com">✉ manpan.whisky@gmail.com</a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/manpan.whisky/" target="_blank" rel="noopener">Facebook 粉專</a>
+    </div>
+    <div class="note">🥃 本站僅提供知識內容，未滿十八歲請勿飲酒，飲酒過量有害健康。</div>
+    <div class="note" style="margin-top:12px">🎓 此為展示用學習網站 · 使用 Claude 製作</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark">滿</span>滿帆洋行 Manpan</div>
+    <div>© 2026 滿帆洋行有限公司 Manpan Co., Ltd. · 給旅人的日本酒實用筆記<br>🎓 此為展示用學習網站，使用 Claude 製作</div>
+  </div>
+</footer>
+
+</body>
+</html>
