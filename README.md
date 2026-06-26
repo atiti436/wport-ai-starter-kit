@@ -128,6 +128,24 @@ node templates/resume/render.mjs doc/resume/resume.json doc/resume/resume.html
 node templates/report/render.mjs doc/resume/interview-prep.json doc/resume/interview-prep.html
 ```
 
+## 本機預覽 open-slide 簡報
+
+repo 根目錄已含 open-slide workspace（`slides/`、`package.json`）。第一次先裝依賴：
+
+```bash
+npm install
+```
+
+| 目的 | 指令 | 開啟方式 |
+|------|------|----------|
+| 開發預覽（熱更新） | `npm run dev` | 瀏覽器開 [http://localhost:5173](http://localhost:5173) 首頁選簡報，或直接 [http://localhost:5173/s/getting-started](http://localhost:5173/s/getting-started) |
+| 正式 build | `npm run build` | 輸出到 `dist/` |
+| 預覽 build 結果 | `npm run preview` | build 後執行，同樣用瀏覽器開 localhost |
+
+內建範例簡報 id：`getting-started`、`ai-rookie`、`ai-junior-intern-guide`、`smart-station`（路徑格式 `/s/<id>`）。
+
+用 `pnpm` 也可以：`pnpm install` → `pnpm dev` / `pnpm build` / `pnpm preview`。
+
 ## 同一專案：履歷站 + open-slide 簡報站（Vercel 雙站）
 
 若 `doc/resume/`（靜態履歷 HTML）與 open-slide（`slides/` 簡報）**住在同一個 Git repo**，必須遵守 **領地劃分 + 兩個 Vercel Project**，否則 build 與 deploy 會互相覆蓋。

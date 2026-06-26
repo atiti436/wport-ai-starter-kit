@@ -1,4 +1,5 @@
 import type { DesignSystem, Page, SlideMeta } from '@open-slide/core';
+import { useSlidePageNumber } from '@open-slide/core';
 import { useEffect, useRef, useState } from 'react';
 import { SmartStationVol3 } from '../smart-station/index';
 
@@ -170,10 +171,13 @@ const TopBar = ({
   eyebrow,
   dark = false,
 }: {
-  num: string;
+  num?: string;
   eyebrow: string;
   dark?: boolean;
-}) => (
+}) => {
+  const { current } = useSlidePageNumber();
+  const pageLabel = num ?? String(current).padStart(2, '0');
+  return (
   <div
     style={{
       display: 'flex',
@@ -192,7 +196,7 @@ const TopBar = ({
         letterSpacing: '0.04em',
       }}
     >
-      {num}
+      {pageLabel}
     </span>
     <span
       style={{
@@ -226,7 +230,8 @@ const TopBar = ({
       <b style={{ color: dark ? c.primaryMuted : c.primary, fontWeight: 700 }}>w</b>port
     </span>
   </div>
-);
+  );
+};
 
 const Title = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
   <h1
@@ -1947,7 +1952,12 @@ const CalcSlider = ({
   </div>
 );
 
-const CombinatoricsCalculator: Page = () => {
+type CalcSecondAxis = { label: string; sub: string; noun: string };
+const DEFAULT_SECOND_AXIS: CalcSecondAxis = { label: 'Agent', sub: 'agents', noun: 'Agent' };
+
+export const CombinatoricsCalculator = ({
+  secondAxis = DEFAULT_SECOND_AXIS,
+}: { secondAxis?: CalcSecondAxis } = {}) => {
   const [ssot, setSsot] = useState(5);
   const [agent, setAgent] = useState(3);
   const [skill, setSkill] = useState(6);
@@ -1979,7 +1989,7 @@ const CombinatoricsCalculator: Page = () => {
 
   return (
     <SlideShell>
-      <TopBar num="15" eyebrow="Finale · Combinatorics Calculator" />
+      <TopBar eyebrow="Finale · Combinatorics Calculator" />
       <Title>
         你的工作流，是一道<Accent>乘法題</Accent>。
       </Title>
@@ -2014,8 +2024,8 @@ const CombinatoricsCalculator: Page = () => {
             onChange={setSsotVal}
           />
           <CalcSlider
-            label="Agent"
-            sub="agents"
+            label={secondAxis.label}
+            sub={secondAxis.sub}
             value={agent}
             min={1}
             max={10}
@@ -2081,7 +2091,7 @@ const CombinatoricsCalculator: Page = () => {
           </div>
           <p style={{ fontSize: 24, lineHeight: 1.6, color: c.body, marginTop: 28, maxWidth: 560 }}>
             當你手上有 <strong style={{ color: c.ink }}>{ssot} 個 SSOT 筆記</strong>、
-            <strong style={{ color: c.ink }}> {agent} 個 Agent</strong>、
+            <strong style={{ color: c.ink }}> {agent} 個 {secondAxis.noun}</strong>、
             <strong style={{ color: c.ink }}> {skill} 個 Skills</strong>、
             <strong style={{ color: c.ink }}> {cli} 個 CLI</strong>，你就能創造出{' '}
             <strong style={{ color: c.ink }}>{total.toLocaleString('en-US')} 種</strong>
@@ -2095,7 +2105,7 @@ const CombinatoricsCalculator: Page = () => {
 
 export const WhatYouCanDo: Page = () => (
   <SlideShell variant="tint">
-    <TopBar num="13" eyebrow="實戰路線圖 · What You Can Build" />
+    <TopBar eyebrow="實戰路線圖 · What You Can Build" />
     <Title>
       具體來說，你可以<Accent>做到這些</Accent>
     </Title>
@@ -2110,23 +2120,11 @@ export const WhatYouCanDo: Page = () => (
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-        <p
-          style={{
-            fontSize: 26,
-            lineHeight: 1.6,
-            color: c.body,
-            margin: 0,
-            maxWidth: 900,
-          }}
-        >
-          從 <ObsidianLink /> 個人資料到網站上線、寄信給教授——今天就能跑通的完整六步驟。
-        </p>
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             gap: 14,
-            marginTop: 22,
             flex: 1,
             minHeight: 0,
           }}
