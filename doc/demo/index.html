@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>滿帆洋行 Manpan — 課堂展示</title>
+  <meta name="description" content="滿帆洋行公司介紹 — 由 Cursor AI 產出的課堂展示頁" />
+  <style>
+    :root {
+      --bg: #0f0e0c;
+      --surface: #1a1814;
+      --text: #f5f0e8;
+      --muted: #a89f8f;
+      --accent: #c9a227;
+      --accent-soft: #e8d48a;
+      --border: rgba(201, 162, 39, 0.2);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .hero {
+      min-height: 52vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 1.5rem 3rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 162, 39, 0.12), transparent),
+        linear-gradient(180deg, #1a1610 0%, var(--bg) 100%);
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 36rem;
+      margin: 0 auto 1.5rem;
+    }
+    .tagline {
+      font-size: 1.25rem;
+      color: var(--accent-soft);
+      font-weight: 500;
+    }
+    .links {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: 0.92; }
+    .btn-primary {
+      background: var(--accent);
+      color: #1a1610;
+    }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+    section { margin-bottom: 3rem; }
+    h2 {
+      font-size: 1.35rem;
+      color: var(--accent-soft);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    ul { padding-left: 1.25rem; }
+    li { margin-bottom: 0.5rem; color: var(--muted); }
+    li strong { color: var(--text); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .card h3 {
+      font-size: 1rem;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
+    }
+    .card p { font-size: 0.9rem; color: var(--muted); }
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .meta {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .meta table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .meta td { padding: 0.5rem 0; vertical-align: top; }
+    .meta td:first-child { color: var(--muted); width: 7rem; }
+    .meta a { color: var(--accent-soft); }
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent-soft); }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <span class="badge">Cursor AI 課堂展示</span>
+    <h1>滿帆洋行 Manpan</h1>
+    <p class="subtitle">Manpan Co., Ltd. · 日本梅酒、威士忌與清酒 — 旅人買酒知識情報站</p>
+    <p class="tagline">幫台灣旅人搞懂「日本買酒、帶酒回台灣」的規定、稅金與實用攻略</p>
+    <div class="links">
+      <a class="btn btn-primary" href="https://www.manpanwhisky.com/" target="_blank" rel="noopener">前往官方網站</a>
+      <a class="btn btn-ghost" href="https://github.com/atiti436/wport-ai-starter-kit" target="_blank" rel="noopener">GitHub 原始碼</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>我們是誰</h2>
+      <div class="meta">
+        <table>
+          <tr><td>官網</td><td><a href="https://www.manpanwhisky.com/">manpanwhisky.com</a></td></tr>
+          <tr><td>定位</td><td>日本酒類知識情報站</td></tr>
+          <tr><td>性質</td><td>知識型內容網站（非電商、不放購物車）</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>解決什麼問題</h2>
+      <ul>
+        <li><strong>可以帶幾瓶？</strong> 免稅額度與入境規定</li>
+        <li><strong>要繳多少稅？</strong> 關稅、菸酒稅、營業稅怎麼算</li>
+        <li><strong>怎麼買、怎麼帶？</strong> 寄回台灣、限定酒哪裡買</li>
+      </ul>
+      <p style="margin-top:1rem;color:var(--muted);">滿帆把複雜法規整理成<strong style="color:var(--text);">白話文章 + 試算工具</strong>，出發前、結帳前就能自己估一下。</p>
+    </section>
+
+    <section>
+      <h2>網站主要功能</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>酒款介紹</h3>
+          <p>嚴選日本梅酒與威士忌，從酒廠故事到釀造方式</p>
+        </div>
+        <div class="card">
+          <h3>稅金試算器</h3>
+          <p>輸入日幣價格與容量，估算帶酒回台應繳稅額</p>
+        </div>
+        <div class="card">
+          <h3>豆知識／攻略</h3>
+          <p>帶酒規定、寄酒回台、抽選攻略、市場行情</p>
+        </div>
+        <div class="card">
+          <h3>關於滿帆</h3>
+          <p>品牌故事與經營理念</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>品牌理念</h2>
+      <ul>
+        <li><strong>實務經驗</strong> — 曾接觸日本酒類進口、文件、稅金與市場價格</li>
+        <li><strong>工具導向</strong> — 用試算器與表格解決真問題</li>
+        <li><strong>新手友善</strong> — 白話解釋法規、稅金與酒類差異</li>
+        <li><strong>非販售導向</strong> — 專注知識分享，不硬推商品</li>
+      </ul>
+      <blockquote class="quote" style="margin-top:1.5rem;">
+        滿帆洋行 — 揚帆啟航，將日本職人的心意帶到台灣。
+      </blockquote>
+    </section>
+
+    <section>
+      <h2>本次 AI 作業</h2>
+      <p style="color:var(--muted);margin-bottom:1rem;">用 Cursor + wport-ai-starter-kit，以自然語言請 AI 整理公司介紹，產出此展示網頁。</p>
+      <div class="meta">
+        <table>
+          <tr><td>步驟 1</td><td>Fork wport-ai-starter-kit</td></tr>
+          <tr><td>步驟 2</td><td>連結 Cursor Skills，跟 AI 描述需求</td></tr>
+          <tr><td>步驟 3</td><td>產出 HTML 展示頁並 deploy 上線</td></tr>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 滿帆洋行有限公司 Manpan Co., Ltd.<br />
+    <a href="https://www.manpanwhisky.com/">manpanwhisky.com</a>
+  </footer>
+</body>
+</html>
